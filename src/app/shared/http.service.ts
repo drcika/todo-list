@@ -32,6 +32,7 @@ export class HttpService {
     if (this.token) {
       this.authenticated = true;
       this.headers = new HttpHeaders().set('Authorization', `${this.token.key}`);
+      this.headers.set('Access-Control-Allow-Origin', "*");
       this.router.navigate(['/todo']);
     }
   }
@@ -44,6 +45,7 @@ export class HttpService {
           this.authenticated = true;
           this.token = { key: data.token }
           this.headers = new HttpHeaders().set('Authorization', `${this.token.key}`);
+          this.headers.set('Access-Control-Allow-Origin', "*");
           localStorage.setItem('currentUser', JSON.stringify({ key: `${data.token}` }));
           this.router.navigate(['/todo']);
         });
