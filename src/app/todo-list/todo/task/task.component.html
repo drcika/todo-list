@@ -1,0 +1,6 @@
+<form [formGroup]="addNewTask" (ngSubmit)="onAddNewTask()" novalidate>
+  <mat-form-field>
+    <input matInput type="text" placeholder="New Task" formControlName="task">
+  </mat-form-field>
+  <button mat-raised-button type="submit" [disabled]="addNewTask.invalid"> Save </button>
+</form>

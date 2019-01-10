@@ -1,7 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
+import { TodoListModule } from './todo-list/todo-list.module';
+
+import { GlobalErrorHandler } from './shared/global-error-handler';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -10,9 +16,14 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    CoreModule,
+    SharedModule,
+    TodoListModule
   ],
-  providers: [],
+  providers: [
+    { provide: ErrorHandler, useClass: GlobalErrorHandler }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

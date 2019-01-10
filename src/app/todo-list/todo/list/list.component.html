@@ -1,0 +1,14 @@
+<mat-nav-list class="mt-5" *ngIf="tasks">
+  <mat-list-item *ngFor="let task of tasks" class="mt-2 mat-elevation-z3">
+    <p matLine>{{task.content}}</p>
+    <button mat-raised-button #menuTrigger="matMenuTrigger" color="primary" [matMenuTriggerFor]="menu" class="btn pull-right px-2 mr-3" [disabled]="task.done">
+        {{ task.done ? 'Done' : 'In Progress'}}</button>
+    <button mat-raised-button (click)="httpService.deleteTask(task.id)" color="accent" class="btn pull-right">Delete</button>
+
+    <mat-menu #menu="matMenu">
+      <mat-nav-list>
+        <mat-list-item (click)="httpService.markTaskAsDone(task.id)">Done</mat-list-item>
+      </mat-nav-list>
+    </mat-menu>
+  </mat-list-item>
+</mat-nav-list>

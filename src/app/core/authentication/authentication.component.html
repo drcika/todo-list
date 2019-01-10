@@ -1,0 +1,22 @@
+<div class="container text-center mt-md-5">
+  <mat-card class="col-sm-12 p-3 col-md-4 mx-auto">
+    <form class="m-0 p-1" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <h5>Welcome to</h5>
+      <h3 class="mt-2">TODO List</h3>
+      <p>Log In</p>
+
+      <mat-form-field>
+        <input type="email" matInput placeholder="E-mail address" formControlName="username">
+        <mat-error>Please enter a valid email address</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="password" id="password" placeholder="Password" formControlName="password">
+        <mat-error>Missing password</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button class="my-2" type="submit" [disabled]="loginForm.invalid">Log In</button>
+
+    </form>
+  </mat-card>
+</div>
